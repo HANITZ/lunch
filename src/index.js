@@ -1,6 +1,6 @@
 import './css/index.css'
-import WebController from './WebController'
+import App from './App';
 
 
-WebController().start()
+App(document.querySelector('#app'));
 
