@@ -23,3 +23,5 @@ const imagePaths:IImagePaths = {
         addButton: './add-button.png'
     }
 }
+
+export default imagePaths;

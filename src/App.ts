@@ -1,14 +1,26 @@
+import imagePaths from "./constants/imagePaths"
 import navBar from "./js/navBar"
+import createElement from "./util/createElement"
 
 
 
-const App = (el: HTMLElement) => {
+const App = (app: HTMLElement) => {
     
+    // const header = document.createElement('header')
+    // header.className = 'gnb'
+    // app.appendChild(header)
+    const header = createElement('header', {'class': 'gnb'}, app)
+    const main = createElement('main', {}, app)
+
+
+
+
     
     const start = () => {
-        const header = document.createElement('header')
-        header.className = 'gnb'
-        el.appendChild(header)
+
+        
+        
+        
 
         const headerH1 = document.createElement('h1')
         headerH1.className = 'gnb__title text-title'
@@ -22,13 +34,14 @@ const App = (el: HTMLElement) => {
         header.appendChild(headerButton)
 
         const headerButtonImg = document.createElement('img')
-        headerButtonImg.src = ``
+        headerButtonImg.src = imagePaths.generalIcon.addButton
         headerButtonImg.alt = '음식점 추가'
         headerButton.appendChild(headerButtonImg)
 
 
-        const main = document.createElement('main')
-        el.appendChild(main)
+        
+
+        
 
     }
 
