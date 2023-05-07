@@ -54,7 +54,88 @@ const App = (app: HTMLElement) => {
         const restaurantUl = createElement('ul', {'class': 'restaurant-list'}, restaurantSection, '')
         restaurants(restaurantUl)
 
+        // 음식점 추가 모달
+        const addRestaurantModalDiv = createElement('div', {'class': 'modal modal--open'}, main, '')
+        const modalBackdrop = createElement('div', {'class': 'modal-backdrop'}, addRestaurantModalDiv, '')
+        const modalContainer = createElement('div', {'class': 'modal-container'}, addRestaurantModalDiv, '')
+    
+        const containerH2 = createElement('h2', {'class': 'modal-title text-title'}, modalContainer, '새로운 음식점')
+        const containerForm = createElement('form', {}, modalContainer, '')
 
+        const formDiv = createElement('div', {'class': 'form-item form-item--required'}, containerForm, '')
+        const formDivLabel = createElement('label', {'for': 'category text-caption'}, formDiv, '카테고리')
+
+        const formDivSelect = createElement('select', {
+            'name': 'category',
+            'id': 'category',
+            'required': ''
+    }, formDiv, '')
+        const modalSelectOption = createElement('option', {'value': ''}, formDivSelect, '선택해 주세요')
+        const modalKorOption = createElement('option', {'value': '한식'}, formDivSelect, '한식')
+        const modalChiOption = createElement('option', {'value': '중식'}, formDivSelect, '중식')
+        const modalJapOption = createElement('option', {'value': '일식'}, formDivSelect, '일식')
+        const modalWesOption = createElement('option', {'value': '양식'}, formDivSelect, '양식')
+        const modalAsiOption = createElement('option', {'value': '아시안'}, formDivSelect, '아시안')
+        const modalEtcOption = createElement('option', {'value': '기타'}, formDivSelect, '기타')
+        // 음식점 이름
+        const formRestaurant = createElement('div', {'class': 'form-item form-item--required'}, containerForm, '')
+        const formRestaurantLabel = createElement('label', {'for': 'name text-caption'}, formRestaurant, '이름')
+        const formRestaurantInput = createElement('input', {
+            'type': 'text',
+            'name': 'name',
+            'id': 'name',
+            'required': ''
+        }, formRestaurant, '')
+
+        // 거리
+        const distanceDiv = createElement('div', {'class': 'form-item form-item--required'}, containerForm, '')
+        const distanceLabel = createElement('label', {'for': 'distance text-caption'}, distanceDiv, '거리(도보 이동 시간)')
+        const distanceSelect = createElement('select', {
+            'name': 'distance',
+            'id': 'distance',
+            'required': ''
+        }, distanceDiv, '')
+        const optionSelect = createElement('option', {'value': ''}, distanceSelect, '선택해 주세요')
+        const option5 = createElement('option', {'value': '5'}, distanceSelect, '5분 내')
+        const option10 = createElement('option', {'value': '10'}, distanceSelect, '10분 내')
+        const option15 = createElement('option', {'value': '15'}, distanceSelect, '15분 내')
+        const option20 = createElement('option', {'value': '20'}, distanceSelect, '20분 내')
+        const option30 = createElement('option', {'value': '30'}, distanceSelect, '30분 내')
+
+        // 설명
+        const desDiv = createElement('div', {'class': 'form-item'}, containerForm, '')
+        const desLabel = createElement('label', {'for': 'description text-caption'}, desDiv, '설명')
+        const desTextArea = createElement('textarea', {
+            'name': 'description',
+            'id': 'description',
+            'cols': '30',
+            'rows': '5'
+        }, desDiv, '')
+        const desSpan = createElement('span', {'class':'help-text text-caption'}, desDiv, '메뉴 등 추가 정보를 입력해 주세요.')
+
+        // 링크
+        const linkDiv = createElement('div', {'class': 'form-item'}, containerForm, '')
+        const linkLabel = createElement('label', {'for': 'link text-caption'}, linkDiv, '참고 링크')
+        const linkInput = createElement('input', {
+            'type': 'text',
+            'name': 'link',
+            'id': 'link'
+        }, linkDiv, '')
+        const linkSpan = createElement('span', {'class': 'help-text text-caption'}, linkDiv, '매장 정보를 확인할 수 있는 링크를 입력해 주세요.')
+    
+        //  취소/추가 버튼
+        const buttonDiv = createElement('div', {'calss': 'button-container'}, containerForm, '')
+        const cancelButton = createElement('button', {
+            'type': 'button',
+            'class': 'button button--secondary text-caption'
+        }, buttonDiv, '취소하기')
+        const addButton = createElement('button', {
+            'type': 'button',
+            'class': 'button button--primary text-caption'
+        }, buttonDiv, '추가하기')
+
+
+    
     }
 
     start()

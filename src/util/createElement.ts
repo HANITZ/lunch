@@ -1,7 +1,8 @@
 
 
 interface IProps {
-    [key:string] : string
+
+    [key:string] : string | string
 }
 
 const createElement = (tag:string, props:IProps, parent:HTMLElement, content:string):HTMLElement => {
