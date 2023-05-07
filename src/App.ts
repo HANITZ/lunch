@@ -1,3 +1,4 @@
+import restaurants from "./components/restaurants"
 import imagePaths from "./constants/imagePaths"
 import navBar from "./js/navBar"
 import createElement from "./util/createElement"
@@ -51,7 +52,7 @@ const App = (app: HTMLElement) => {
         // 음식점 목록
         const restaurantSection = createElement('section', {'class': 'restaurant-list-container'}, main, '')
         const restaurantUl = createElement('ul', {'class': 'restaurant-list'}, restaurantSection, '')
-        
+        restaurants(restaurantUl)
 
 
     }

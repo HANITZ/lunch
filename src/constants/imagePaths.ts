@@ -8,12 +8,12 @@ interface IObject {
 
 const imagePaths:IImagePaths = {
     foodCategory: {
-        koreanFood: './category-korean.png',
-        japaneseFood: './category-japanese.png',
-        chineseFood: './category-chinese.png',
-        asianFood: './category-asian.png',
-        westernFood: './category-western.png',
-        etcFood: './category-etc.png',
+        한식 : './category-korean.png',
+        일식 : './category-japanese.png',
+        중식 : './category-chinese.png',
+        아시안 : './category-asian.png',
+        양식 : './category-western.png',
+        기타 : './category-etc.png',
     },
     isLike: {
         like: './favorite-icon-filled.png',
