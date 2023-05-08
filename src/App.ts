@@ -55,7 +55,7 @@ const App = (app: HTMLElement) => {
         restaurants(restaurantUl)
 
         // 음식점 추가 모달
-        const addRestaurantModalDiv = createElement('div', {'class': 'modal modal--open'}, main, '')
+        const addRestaurantModalDiv = createElement('div', {'class': 'modal'}, main, '')
         const modalBackdrop = createElement('div', {'class': 'modal-backdrop'}, addRestaurantModalDiv, '')
         const modalContainer = createElement('div', {'class': 'modal-container'}, addRestaurantModalDiv, '')
     
@@ -134,8 +134,17 @@ const App = (app: HTMLElement) => {
             'class': 'button button--primary text-caption'
         }, buttonDiv, '추가하기')
 
+        const showModal = () => {
+            addRestaurantModalDiv.className='modal--open'
 
-    
+        }
+        const closeModal = () => {
+            addRestaurantModalDiv.className='modal'
+        }
+
+        headerButton.addEventListener('click', showModal )
+        cancelButton.addEventListener('click', closeModal)
+
     }
 
     start()
