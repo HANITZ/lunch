@@ -52,7 +52,7 @@ const App = (app: HTMLElement) => {
         // 음식점 목록
         const restaurantSection = createElement('section', {'class': 'restaurant-list-container'}, main, '')
         const restaurantUl = createElement('ul', {'class': 'restaurant-list'}, restaurantSection, '')
-        restaurants(restaurantUl)
+        const restaurant = restaurants(restaurantUl)
 
         // 음식점 추가 모달
         const addRestaurantModalDiv = createElement('div', {'class': 'modal'}, main, '')
@@ -141,10 +141,22 @@ const App = (app: HTMLElement) => {
         const closeModal = () => {
             addRestaurantModalDiv.className='modal'
         }
+        const changeSorting = (event:Event):void => {
+            const value = (event.target as HTMLSelectElement).value
+            switch(value) {
+                case 'distance':
+                    restaurant.sortByDist()
+                    break
+                case 'name':
+                    restaurant.sortByName()
+                    break
+            }
+            restaurant.renderRestaurants()
+        }
 
         headerButton.addEventListener('click', showModal )
         cancelButton.addEventListener('click', closeModal)
-
+        sortSelect.addEventListener('change', changeSorting )
     }
 
     start()

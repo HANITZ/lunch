@@ -5,7 +5,7 @@ import createElement from "../util/createElement";
 
 
 const restaurants = (ulTag: HTMLElement) => {
-    const defaultRestaurants = [{
+    let Restaurants = [{
         name: '피양콩할머니',
         category: '한식',
         distance: 10,
@@ -41,17 +41,18 @@ const restaurants = (ulTag: HTMLElement) => {
     distance: 5,
     description: '멕시칸 캐주얼 그릴'
 },]
-    const renderDefaultRestaurants = () => {
-        defaultRestaurants.forEach(makeRestaurant)
+    const renderRestaurants = () => {
+        ulTag.innerHTML = ''
+        Restaurants.forEach(makeRestaurant)
     }
 
-    interface ImakeRestaurant {
+    interface IRestaurant {
         name : string,
         category : string,
         distance: number,
         description: string
     }
-    const makeRestaurant = (restaurant: ImakeRestaurant) => {
+    const makeRestaurant = (restaurant: IRestaurant) => {
         const categorySrc = restaurant.category
         const restaurantLi = createElement('li', {'class':'restaurant'}, ulTag, '')
         
@@ -69,8 +70,15 @@ const restaurants = (ulTag: HTMLElement) => {
         const restaurantInfoP = createElement('p', {'class': 'restaurant__description text-body'}, restaurantInfoDiv, restaurant.description)
         
     }
-    renderDefaultRestaurants()
 
+    const sortByName = () => {Restaurants = Restaurants.sort((a, b)=>a.name.localeCompare(b.name))}
+    const sortByDist = () => {Restaurants = Restaurants.sort((a, b)=>Number(a.distance) - Number(b.distance) )}
+    renderRestaurants()
+    return {
+        sortByName,
+        sortByDist,
+        renderRestaurants,
+    }
 }
 
 
