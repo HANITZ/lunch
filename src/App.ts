@@ -141,22 +141,16 @@ const App = (app: HTMLElement) => {
         const closeModal = () => {
             addRestaurantModalDiv.className='modal'
         }
-        const changeSorting = (event:Event):void => {
-            const value = (event.target as HTMLSelectElement).value
-            switch(value) {
-                case 'distance':
-                    restaurant.sortByDist()
-                    break
-                case 'name':
-                    restaurant.sortByName()
-                    break
-            }
-            restaurant.renderRestaurants()
+
+        const changeHandler = (event: Event) => {
+            event.preventDefault()
+            restaurant.sortHandler((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
         }
 
         headerButton.addEventListener('click', showModal )
         cancelButton.addEventListener('click', closeModal)
-        sortSelect.addEventListener('change', changeSorting )
+        sortSelect.addEventListener('change', changeHandler)
+        categorySelect.addEventListener('change', changeHandler)
     }
 
     start()

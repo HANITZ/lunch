@@ -41,9 +41,9 @@ const restaurants = (ulTag: HTMLElement) => {
     distance: 5,
     description: '멕시칸 캐주얼 그릴'
 },]
-    const renderRestaurants = () => {
+    const renderRestaurants = (restaurants:IRestaurant[]) => {
         ulTag.innerHTML = ''
-        Restaurants.forEach(makeRestaurant)
+        restaurants.forEach(makeRestaurant)
     }
 
     interface IRestaurant {
@@ -71,13 +71,30 @@ const restaurants = (ulTag: HTMLElement) => {
         
     }
 
-    const sortByName = () => {Restaurants = Restaurants.sort((a, b)=>a.name.localeCompare(b.name))}
-    const sortByDist = () => {Restaurants = Restaurants.sort((a, b)=>Number(a.distance) - Number(b.distance) )}
-    renderRestaurants()
+    const sortByName = (tmpRestaurants:IRestaurant[]) => tmpRestaurants.sort((a, b)=>a.name.localeCompare(b.name))
+    const sortByDist = (tmpRestaurants:IRestaurant[]) => tmpRestaurants.sort((a, b)=>Number(a.distance) - Number(b.distance) )
+    
+    const sortHandler = (category: string|null = '전체', sorting: string|null = 'name') => {
+
+        const tmpRestaurants = Restaurants.filter(restaurant => 
+            category === '전체' || restaurant.category === category)
+        switch(sorting) {
+            case 'distance':
+                sortByDist(tmpRestaurants)
+                break
+            case 'name':
+                sortByName(tmpRestaurants)
+                break
+        }
+        renderRestaurants(tmpRestaurants)
+    }
+    
+    renderRestaurants(Restaurants)
     return {
         sortByName,
         sortByDist,
         renderRestaurants,
+        sortHandler
     }
 }
 
