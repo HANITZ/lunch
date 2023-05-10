@@ -144,14 +144,27 @@ const App = (app: HTMLElement) => {
 
         const changeHandler = (event: Event) => {
             event.preventDefault()
-            console.log((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
             restaurant.sortHandler((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
+        }
+        const formAddButtonHandler = (event: Event) => {
+            event.preventDefault()
+
+            restaurant.addRestaurant({
+                'category': (formDivSelect as HTMLSelectElement).value,
+                'name' : (formRestaurantInput as HTMLInputElement).value, 
+                'distance': Number((distanceSelect as HTMLSelectElement).value), 
+                'description': (desTextArea as HTMLInputElement).value,
+                'link' : (linkInput as HTMLInputElement).value
+            })
+            
+            closeModal()
         }
 
         headerButton.addEventListener('click', showModal )
         cancelButton.addEventListener('click', closeModal)
         sortSelect.addEventListener('change', changeHandler)
         categorySelect.addEventListener('change', changeHandler)
+        addButton.addEventListener('click', formAddButtonHandler)
     }
 
     start()
