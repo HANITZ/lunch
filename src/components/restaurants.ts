@@ -19,6 +19,7 @@ const restaurants = (ulTag: HTMLElement) => {
     }
 
     const addRestaurant = (restaurant: IRestaurant) => {
+        console.log(restaurant)
         Restaurants.push(restaurant)
         renderRestaurants(Restaurants)
     }

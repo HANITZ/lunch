@@ -2,6 +2,7 @@ import restaurants from "./components/restaurants"
 import imagePaths from "./constants/imagePaths"
 import navBar from "./js/navBar"
 import createElement from "./util/createElement"
+import form from "./util/form"
 
 
 
@@ -156,9 +157,17 @@ const App = (app: HTMLElement) => {
                 'description': (desTextArea as HTMLInputElement).value,
                 'link' : (linkInput as HTMLInputElement).value
             })
+            form().resetForm(addRestaurantModalDiv)
+            // const a = document.getElementById('category')
+            // 'name' : (formRestaurantInput as HTMLInputElement).value, 
+            // 'distance': Number((distanceSelect as HTMLSelectElement).value), 
+            // 'description': (desTextArea as HTMLInputElement).value,
+            // 'link' : (linkInput as HTMLInputElement).value
+            
             
             closeModal()
         }
+
 
         headerButton.addEventListener('click', showModal )
         cancelButton.addEventListener('click', closeModal)
