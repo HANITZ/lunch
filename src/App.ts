@@ -144,6 +144,7 @@ const App = (app: HTMLElement) => {
 
         const changeHandler = (event: Event) => {
             event.preventDefault()
+            console.log((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
             restaurant.sortHandler((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
         }
 

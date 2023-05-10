@@ -74,7 +74,7 @@ const restaurants = (ulTag: HTMLElement) => {
     const sortByName = (tmpRestaurants:IRestaurant[]) => tmpRestaurants.sort((a, b)=>a.name.localeCompare(b.name))
     const sortByDist = (tmpRestaurants:IRestaurant[]) => tmpRestaurants.sort((a, b)=>Number(a.distance) - Number(b.distance) )
     
-    const sortHandler = (category: string|null = '전체', sorting: string|null = 'name') => {
+    const sortHandler = (category: string, sorting: string) => {
 
         const tmpRestaurants = Restaurants.filter(restaurant => 
             category === '전체' || restaurant.category === category)
