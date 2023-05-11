@@ -1,6 +1,7 @@
 import defaultRestaurants from "../constants/defaultRestaurants";
 import imagePaths from "../constants/imagePaths";
 import createElement from "../util/createElement";
+import localstorageControl from "../util/localstorage";
 
 
 interface IRestaurant {
@@ -12,15 +13,24 @@ interface IRestaurant {
 }
 
 const restaurants = (ulTag: HTMLElement) => {
-    const Restaurants = [...defaultRestaurants]
+
+
+    const Restaurants:IRestaurant[] =  localstorageControl.get('restaurants')|| [...defaultRestaurants]
     const renderRestaurants = (restaurants:IRestaurant[]) => {
         ulTag.innerHTML = ''
         restaurants.forEach(makeRestaurant)
+        if(!localstorageControl.get('restaurants')){
+            localstorageControl.set('restaurants', Restaurants)
+        }
+
+        
     }
 
     const addRestaurant = (restaurant: IRestaurant) => {
-        console.log(restaurant)
+        
         Restaurants.push(restaurant)
+        localstorageControl.remove('restaurants')
+        localstorageControl.set('restaurants', Restaurants)
         renderRestaurants(Restaurants)
     }
 
