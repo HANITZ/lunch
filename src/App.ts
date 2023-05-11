@@ -1,3 +1,4 @@
+import addRestaurantInputValidator from "./components/addRestaurantInputValidator"
 import restaurants from "./components/restaurants"
 import imagePaths from "./constants/imagePaths"
 import navBar from "./js/navBar"
@@ -147,25 +148,26 @@ const App = (app: HTMLElement) => {
             event.preventDefault()
             restaurant.sortHandler((categorySelect as HTMLSelectElement).value, (sortSelect as HTMLSelectElement).value)
         }
+
         const formAddButtonHandler = (event: Event) => {
             event.preventDefault()
-
-            restaurant.addRestaurant({
+            
+            const newRestaurant = {
                 'category': (formDivSelect as HTMLSelectElement).value,
                 'name' : (formRestaurantInput as HTMLInputElement).value, 
                 'distance': Number((distanceSelect as HTMLSelectElement).value), 
                 'description': (desTextArea as HTMLInputElement).value,
                 'link' : (linkInput as HTMLInputElement).value
-            })
-            form().resetForm(addRestaurantModalDiv)
-            // const a = document.getElementById('category')
-            // 'name' : (formRestaurantInput as HTMLInputElement).value, 
-            // 'distance': Number((distanceSelect as HTMLSelectElement).value), 
-            // 'description': (desTextArea as HTMLInputElement).value,
-            // 'link' : (linkInput as HTMLInputElement).value
-            
-            
-            closeModal()
+            }
+            try {
+                addRestaurantInputValidator(newRestaurant)
+                restaurant.addRestaurant(newRestaurant)
+                form().resetForm(addRestaurantModalDiv)
+                closeModal()
+            }catch(error:any){
+                alert(error.message)
+            }
+
         }
 
 
