@@ -8,7 +8,7 @@ const localstorageControl =  {
     get : (key:string): Array<any> => {
         const value = localStorage.getItem(key)
         
-        return value ? JSON.parse(value) : []
+        return value ? JSON.parse(value) : null
     },
     remove : (key:string):void => {
         localStorage.removeItem(key)

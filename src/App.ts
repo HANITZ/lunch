@@ -1,9 +1,9 @@
 import addRestaurantInputValidator from "./components/addRestaurantInputValidator"
 import restaurants from "./components/restaurants"
 import imagePaths from "./constants/imagePaths"
-import navBar from "./js/navBar"
 import createElement from "./util/createElement"
 import form from "./util/form"
+import selectCreate from "./util/selectCreate"
 
 
 
@@ -35,21 +35,15 @@ const App = (app: HTMLElement) => {
             'id': 'category-filter',
             'class': 'restaurant-filter'
         }, categorySection, '')
-        const allOption = createElement('option', {'value': '전체'}, categorySelect, '전체')
-        const korOption = createElement('option', {'value': '한식'}, categorySelect, '한식')
-        const chiOption = createElement('option', {'value': '중식'}, categorySelect, '중식')
-        const japOption = createElement('option', {'value': '일식'}, categorySelect, '일식')
-        const wesOption = createElement('option', {'value': '양식'}, categorySelect, '양식')
-        const asiOption = createElement('option', {'value': '아시안'}, categorySelect, '아시안')
-        const etcOption = createElement('option', {'value': '기타'}, categorySelect, '기타')
+        selectCreate(categorySelect, {
+            '전체':'전체', '한식':'한식', '중식':'중식', '일식':'일식', '양식':'양식', '아시안':'아시안'})
         
         const sortSelect = createElement('select', {
             'name': 'sorting',
             'id': 'sorting-filter',
             'class': 'restaurant-filter'
         }, categorySection, '')
-        const sortName = createElement('option', {'value': 'name'}, sortSelect, '이름순')
-        const sortDist = createElement('option', {'value': 'distance'}, sortSelect, '거리순')
+        selectCreate(sortSelect, {'name': '이름순', 'distance':'거리순'})
         
         // 음식점 목록
         const restaurantSection = createElement('section', {'class': 'restaurant-list-container'}, main, '')
@@ -72,13 +66,8 @@ const App = (app: HTMLElement) => {
             'id': 'category',
             'required': ''
     }, formDiv, '')
-        const modalSelectOption = createElement('option', {'value': ''}, formDivSelect, '선택해 주세요')
-        const modalKorOption = createElement('option', {'value': '한식'}, formDivSelect, '한식')
-        const modalChiOption = createElement('option', {'value': '중식'}, formDivSelect, '중식')
-        const modalJapOption = createElement('option', {'value': '일식'}, formDivSelect, '일식')
-        const modalWesOption = createElement('option', {'value': '양식'}, formDivSelect, '양식')
-        const modalAsiOption = createElement('option', {'value': '아시안'}, formDivSelect, '아시안')
-        const modalEtcOption = createElement('option', {'value': '기타'}, formDivSelect, '기타')
+        selectCreate(formDivSelect, {'': '선택해주세요', '한식': '한식', '중식':'중식', '일식': '일식', '양식':'양식','아시안':'아시안','기타':'기타'})
+
         // 음식점 이름
         const formRestaurant = createElement('div', {'class': 'form-item form-item--required'}, containerForm, '')
         const formRestaurantLabel = createElement('label', {'for': 'name text-caption'}, formRestaurant, '이름')
@@ -97,12 +86,8 @@ const App = (app: HTMLElement) => {
             'id': 'distance',
             'required': ''
         }, distanceDiv, '')
-        const optionSelect = createElement('option', {'value': ''}, distanceSelect, '선택해 주세요')
-        const option5 = createElement('option', {'value': '5'}, distanceSelect, '5분 내')
-        const option10 = createElement('option', {'value': '10'}, distanceSelect, '10분 내')
-        const option15 = createElement('option', {'value': '15'}, distanceSelect, '15분 내')
-        const option20 = createElement('option', {'value': '20'}, distanceSelect, '20분 내')
-        const option30 = createElement('option', {'value': '30'}, distanceSelect, '30분 내')
+        selectCreate(distanceSelect, {'': '선택해 주세요'})
+        selectCreate(distanceSelect, {'5': '5분 내', '10': '10분 내', '15': '15분 내', '20': '20분 내', '30': '30분 내'})
 
         // 설명
         const desDiv = createElement('div', {'class': 'form-item'}, containerForm, '')

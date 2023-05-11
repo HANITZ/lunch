@@ -14,8 +14,8 @@ interface IRestaurant {
 
 const restaurants = (ulTag: HTMLElement) => {
 
-
-    const Restaurants:IRestaurant[] =  localstorageControl.get('restaurants')|| [...defaultRestaurants]
+    const Restaurants:IRestaurant[] =  localstorageControl.get('restaurants') || [...defaultRestaurants]
+    console.log(Restaurants)
     const renderRestaurants = (restaurants:IRestaurant[]) => {
         ulTag.innerHTML = ''
         restaurants.forEach(makeRestaurant)
