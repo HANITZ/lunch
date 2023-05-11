@@ -151,7 +151,6 @@ const App = (app: HTMLElement) => {
 
         const formAddButtonHandler = (event: Event) => {
             event.preventDefault()
-            
             const newRestaurant = {
                 'category': (formDivSelect as HTMLSelectElement).value,
                 'name' : (formRestaurantInput as HTMLInputElement).value, 
@@ -167,7 +166,6 @@ const App = (app: HTMLElement) => {
             }catch(error:any){
                 alert(error.message)
             }
-
         }
 
 
