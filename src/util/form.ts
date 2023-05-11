@@ -2,9 +2,6 @@
 
 
 const form = () => {
-
-
-
     const resetForm = (formDiv: HTMLElement) => {
         formDiv.querySelectorAll('input, textarea, select').forEach((el)=>{
             switch(el.tagName.toLowerCase()) {
